@@ -1,0 +1,7 @@
+This project is just me messing around with adding secret messages to jpegs. Currently the method is very simple.
+After the end of the typical jpeg file I add 0xFF followed by an encrypted message. This message is split up into
+its individual bits, starting from least to most significant. This can be easily undone by just adding consecutive 
+8 bytes together until the end of the file. Simply put, for every encoded byte, there are 8 bytes added to the
+end of the jpeg. Finally, after you get the encoded message, to decrypt it simply use the LFSR algorithm with an inital
+state of 0x12345678 and a feedback value of 0xDEADBEEF. These values can be changed, though please note to get the same
+output as input you must use the same values.
