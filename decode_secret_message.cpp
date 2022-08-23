@@ -74,9 +74,9 @@ int main (int argc, char *argv[]){
    bool header_found = false;
    std::vector<uint8_t> encrypted_message_vec;
    while(x<result.size()-3){
-        if((result.at(x) == 0xFF) && (result.at(x+1) == 0xD9) && (result.at(x+2) == 0xFF)){
+        if((result.at(x) == 0xFF) && (result.at(x+1) == 0xD9)){
             header_found = true;
-            x=x+3;//when we identify the end header, we know the rest are going to be 8 bytes chuncks
+            x=x+2;//when we identify the end header, we know the rest are going to be 8 bytes chuncks
             while(x<result.size()-1){
                 uint8_t temp = 0;
                 for(int y=0; y<8; y++){
@@ -97,7 +97,7 @@ int main (int argc, char *argv[]){
     }
     std::cout<<"Encrypted message in Hex: "<<std::endl;
     for(uint8_t i: encrypted_message_vec){
-        printf("%02X",i);
+        printf("%02x",i);
     }
     printf("\n");
     unsigned char* encrypted_message;

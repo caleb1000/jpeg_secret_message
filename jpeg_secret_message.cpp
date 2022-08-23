@@ -71,7 +71,7 @@ int main (int argc, char *argv[]){
     else{
         std::cout<<"Error opening jpeg"<<std::endl;
     }
-
+    result.pop_back();//remove 0xFF end char
     int string_index = 0;
     int bit = 0; //current bit being encoded 0-7
     uint8_t test =0;
