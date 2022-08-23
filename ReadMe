@@ -4,3 +4,14 @@ its individual bits, each bit now turned into a byte starting from least to most
 8 bytes added to the end of the jpeg. Finally, after you get the encoded message, to decrypt it simply use the LFSR algorithm with an inital
 state of 0x12345678 and a feedback value of 0xDEADBEEF. These values can be changed, though please note to get the same
 output as input you must use the same values.
+
+To use this tool all you need to do is first run make. Two executable files will be made that allow for injecting
+secret messages into jpegs and decrypting encoded messages in jpegs.
+
+To added a secret message run the following command
+./jpeg_secret_message <filename>.jpeg <Message>
+Note: currently the output jpeg is named secret_message.jpeg. This will be changed to allow users to select a name.
+
+To decode a secret message from a jpeg use the following 
+./decode_secret_message <filename>.jpeg
+
