@@ -1,4 +1,4 @@
-# Jpeg secret message injector and decoder#
+# Jpeg secret message injector and decoder #
 This project deals with adding secret messages to jpegs. Currently the method is very simple; the given input message is encrypted 
 using a LFSR algorithm. After the end of the typical jpeg file this encrypted message is added. To make decoding this message harder it is split up into
 its individual bits, each bit now turned into a byte starting from least to most significant. Simply put, for every encoded byte, there will be
@@ -18,9 +18,11 @@ To decode a secret message from a jpeg use the following
 ./decode_secret_message <filename>.jpeg
 i.e ./decode_secret_message secret_message.jpeg (outputs the secret message hidden in the jpeg)
   
-  ##Future Goals:##
+  ## Future Goals ##
   -Add hidden messages within the start of frame color components (i.e luminance (Y), chrominance-blue (Cb), and chrominance-red (Cr) )
+  
   -Expand to other image formats such as png or gif
+  
   -Explore different cryptographic methods and algorithms 
   
   ![image](https://user-images.githubusercontent.com/30327564/186339641-9ea0d54c-0d2d-4aa6-a819-5833ad68ebac.png)
