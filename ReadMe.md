@@ -8,12 +8,12 @@ To use this tool all you need to do is first run make. Two executable files will
 secret messages into jpegs and decrypting encoded messages in jpegs.
 
 To added a secret message run the following command
-./jpeg_secret_message <filename>.jpeg <Message> <optional>
+` ./jpeg_secret_message <filename>.jpeg <Message> <optional> `
 i.e ./jpeg_secret_message resume.jpeg AppleSauce apple.jpeg (creates a jpeg named apple.jpeg with the encrypted message AppleSauce at the end)
 Note: The last argument is the output filename and is optional, when not specified the default is secret_message.jpeg
 
 To decode a secret message from a jpeg use the following 
-./decode_secret_message <filename>.jpeg
+`./decode_secret_message <filename>.jpeg`
 i.e ./decode_secret_message secret_message.jpeg (outputs the secret message hidden in the jpeg)
   
   ## Future Goals ##
