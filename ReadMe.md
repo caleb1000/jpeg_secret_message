@@ -16,4 +16,7 @@ Note: The last argument is the output filename and is optional, when not specifi
 To decode a secret message from a jpeg use the following 
 ./decode_secret_message <filename>.jpeg
 i.e ./decode_secret_message secret_message.jpeg (outputs the secret message hidden in the jpeg)
+  
+  ![image](https://user-images.githubusercontent.com/30327564/186339641-9ea0d54c-0d2d-4aa6-a819-5833ad68ebac.png)
+
 
