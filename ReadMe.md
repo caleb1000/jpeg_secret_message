@@ -1,12 +1,10 @@
 # Jpeg secret message injector and decoder #
-This project deals with adding secret messages to jpegs. Currently the method is very simple; the given input message is encrypted 
-using a LFSR algorithm. After the end of the typical jpeg file this encrypted message is added. To make decoding this message harder it is split up into
+  This project deals with adding secret messages to jpegs. Currently the method is very simple; the given input message is encrypted 
+using a LFSR algorithm. At the end of a typical jpeg file an encrypted message is added. To make decoding this message harder it is split up into
 its individual bits, each bit now turned into a byte starting from least to most significant. Simply put, for every encoded byte, there will be
-8 bytes added to the end of the jpeg. To get the original value of the encrypted message, add every 8 bytes together until the end of the file.
-Finally, after you get the encrypted message, to decrypt it simply use the LFSR algorithm with an inital state of 0x12345678 and a feedback value of 0xDEADBEEF. 
-These values can be changed, though please note to get the same output as input you must use the same values.
+8 bytes added to the end of the jpeg. To get the original value of the encrypted message, after the end of the original jpeg file add every 8 bytes together until the end of the file. Finally, after you get the encrypted message, to decrypt it simply use the LFSR algorithm with an inital state of 0x12345678 and a feedback value of 0xDEADBEEF. These values can be changed, though please note to get the same output as input you must use the same values.
 
-To use this tool all you need to do is first run make. Two executable files will be made that allow for injecting
+  To use this tool all you need to do is first run make. Two executable files will be made that allow for injecting
 secret messages into jpegs and decrypting encoded messages in jpegs.
 
 To added a secret message run the following command
