@@ -17,6 +17,11 @@ To decode a secret message from a jpeg use the following
 ./decode_secret_message <filename>.jpeg
 i.e ./decode_secret_message secret_message.jpeg (outputs the secret message hidden in the jpeg)
   
+  Future Goals:
+  *Add hidden messages within the start of frame color components (i.e luminance (Y), chrominance-blue (Cb), and chrominance-red (Cr) )
+  *Expand to other image formats such as png or gif
+  *Explore different cryptographic methods and algorithms 
+  
   ![image](https://user-images.githubusercontent.com/30327564/186339641-9ea0d54c-0d2d-4aa6-a819-5833ad68ebac.png)
 
 
