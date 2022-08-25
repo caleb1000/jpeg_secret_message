@@ -15,6 +15,8 @@ Note: The last argument is the output filename and is optional, when not specifi
 To decode a secret message from a jpeg use the following 
 `./decode_secret_message <filename>.jpeg`
 i.e ./decode_secret_message secret_message.jpeg (outputs the secret message hidden in the jpeg)
+
+New Feature: Appending the -i flag to the end of your jpeg_secret_message command allows you to encode hidden messages inside the chromoinance (warning limits message size and doesn't work well with color images)
   
   ## Future Goals ##
   -Add hidden messages within the start of frame color components (i.e luminance (Y), chrominance-blue (Cb), and chrominance-red (Cr) )
