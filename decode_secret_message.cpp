@@ -49,7 +49,7 @@ int main (int argc, char *argv[]){
     }
 
     if(!header_found){
-        std::cout<<"Secret header not found in jpeg"<<std::endl;
+        std::cout<<"Secret message not found in jpeg"<<std::endl;
         return -1;
     }
     std::cout<<"Encrypted message in Hex: "<<std::endl;
