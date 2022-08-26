@@ -35,7 +35,7 @@ void inject_in_chrom(std::vector<unsigned char>& result, unsigned char* encrypte
                 uint16_t hi = (uint8_t)result.at(x+2) << 8;
                 uint16_t low = (uint8_t)result.at(x+3);
                 size = hi + low;
-                if(message_len*8 > (int)size){
+                if(message_len*8 > (int)size-5){
                     std::cout<<"Message too large to be added in jpeg, max size of message "<< ((int)size-5)/8 <<std::endl;
                     return;
                 }
@@ -43,7 +43,7 @@ void inject_in_chrom(std::vector<unsigned char>& result, unsigned char* encrypte
                 int string_index = 0;
                 for(int y = x+5; string_index<message_len; y++){
                      result.at(y) = (result.at(y) & 0xFE) | (0x1 & (encrypted_message[string_index] >> bit ));
-                     printf("%d",result.at(y) & 0x1);
+                     //printf("%d",result.at(y) & 0x1);
                      if(bit == 7){
                          string_index++;
                          bit = 0;
@@ -104,10 +104,10 @@ int main (int argc, char *argv[]){
     }
 
     if(inject_at_eof){
-        std::cout<<"Inject message at end of file"<<std::endl;
+        std::cout<<"Injected message at end of file"<<std::endl;
     }
     else{
-        std::cout<<"Inject message in file: WARNING THIS LIMITS THE MESSAGE SIZE"<<std::endl;
+        std::cout<<"Injected message in chromo of jpeg: WARNING THIS LIMITS THE MESSAGE SIZE"<<std::endl;
     }
 
     std::string message = argv[2];
