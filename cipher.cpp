@@ -1,5 +1,5 @@
 #include "cipher.h"
-const uint32_t F = 0x87654321;
+const uint32_t F = 0xDEADBEEF;
 const uint32_t maskBit = 0x01;
 const uint32_t maskByte = 0xFF;
 
