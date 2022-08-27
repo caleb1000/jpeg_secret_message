@@ -21,6 +21,7 @@ std::vector<unsigned char> jpeg_to_vec(char* jpeg_name){
     else{
         std::cout<<"Error opening jpeg"<<std::endl;
     }
+    jpeg.close();
     result.pop_back();//remove 0xFF aka end of file char
     return result;
 }

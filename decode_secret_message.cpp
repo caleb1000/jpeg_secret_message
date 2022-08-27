@@ -5,6 +5,25 @@
 #include <iterator>
 #include "cipher.h"
 
+std::vector<unsigned char> jpeg_to_vec(char* jpeg_name){
+    std::ifstream jpeg;
+    unsigned char curr_char;
+    std::vector<unsigned char> result;
+    std::string jpeg_name_string = jpeg_name;
+    jpeg.open(jpeg_name_string,std::ios::binary);
+    if(jpeg.is_open()){
+        while(jpeg){
+            curr_char = (unsigned char)jpeg.get();
+            result.push_back(curr_char);
+        }
+    }
+    else{
+        std::cout<<"Error opening jpeg"<<std::endl;
+    }
+    jpeg.close();
+    result.pop_back();//remove 0xFF aka end of file char
+    return result;
+}
 
 std::vector<uint8_t> parse_from_end(std::vector<unsigned char> result){
 	   int x=0;
@@ -94,18 +113,9 @@ int main (int argc, char *argv[]){
     else{
         std::cout<<"Parsing secret message from end of target jpeg"<<std::endl;
     }
-    std::ifstream jpeg;
-    jpeg.open(argv[1],std::ios::binary);
-    std::vector<unsigned char> result;
-    unsigned char curr_char;
-    if(jpeg.is_open()){
-        while(jpeg){
-            curr_char = (unsigned char)jpeg.get();
-            result.push_back(curr_char);
-        }
-    }
-    else{
-        std::cout<<"Error opening jpeg"<<std::endl;
+    std::vector<unsigned char> result = jpeg_to_vec(argv[1]);
+    if(result.size() == 0){
+        std::cout<<"Error: jpeg vector returned empty"<<std::endl;
         return -1;
     }
     unsigned char* encrypted_message;
@@ -128,7 +138,6 @@ int main (int argc, char *argv[]){
     std::cout<<"Decrypted message in ascii: ";
     cipher(encrypted_message, encrypted_message_vec.size(), 0x12345678, true);
     free(encrypted_message);
-    jpeg.close();
 
 return 0;
 }
